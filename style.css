@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font: normal 16px sans-serif;
+    color: #555;
+    scroll-behavior: smooth;
+  }
+  
+  ul,
+  nav {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    opacity: 0.7;
+  }
+  
+  a:hover {
+    opacity: 1;
+  }
+  
+  a.btn {
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    background-color: #fff;
+    opacity: 1;
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 100px 0;
+    animation: .75s fadein 0.25s forwards;
+    opacity: 0;
+    z-index: 100;
+    /* maybe change animation to 1s fadein 0.5s if you want it slower/smoother */
+  }
+  
+  
+  
+  @keyframes fadein {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  header h2 {
+    font-family: "Quicksand", sans-serif; /* TO BE REPLACED */
+  }
+  
+  header nav {
+    display: flex;
+    margin-right: -15px;
+  }
+  
+  header nav li {
+    margin: 0 15px;
+  }
