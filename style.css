@@ -73,3 +73,7 @@
     align-items: center;
     padding: 100px 80px;
   }
+
+  .hovering {
+    stroke: hotpink;
+  }
