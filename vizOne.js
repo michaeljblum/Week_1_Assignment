@@ -50,7 +50,6 @@ d3.json("data.json", function(error, data) {
     }
     
 
-
     circles
         .attr("cx", function (d) { return xScale(+d.estimate) })
         // .attr("cx", function (d,i) { return i * 5})
@@ -72,4 +71,8 @@ d3.json("data.json", function(error, data) {
             .attr("class", "axis")
             .attr("transform", "translate(0, " + (h-1) + ")")
             .call(xAxis)
+
+
 })
+
+

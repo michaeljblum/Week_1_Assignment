@@ -43,7 +43,7 @@
     animation: .75s fadein 0.25s forwards;
     opacity: 0;
     z-index: 100;
-    background-color: bisque;
+    background-color: lightblue;
     /* maybe change animation to 1s fadein 0.5s if you want it slower/smoother */
   }
   
@@ -76,7 +76,7 @@
   }
 
   .hovering {
-    stroke: hotpink;
+    stroke: white;
   }
 
   #vizOne {
@@ -85,9 +85,13 @@
 
   .axis path,
   .axis line {
-
+    stroke: blue;
   }
 
-  .axis text {
+  /* .axis text {
 
-  }
+  } */
+
+.seeThrough {
+  opacity: .5;
+}

@@ -1,66 +1,77 @@
-const h = 500,
-    w = 700;
+const height = 500,
+    width = 700;
 
-const svg = d3.select("#vizOne")
+const svgTwo = d3.select("#vizTwo")
     .append("svg")
-    .attr("width", w)
-    .attr("height", h)
+    .attr("width", width)
+    .attr("height", height)
 
-    
+// var format = d3.format(",d");
+
+// var stratify = d3.stratify()
+//     .parentId(function(d) { return d.country.substring(0, d.country.lastIndexOf(".")); })
+
+// var pack = d3.pack()
+//             .size([width - 2, height -2])
+//             .padding(3)
+
 d3.json("data.json", function(error, data) {
     if (error) throw error
 
-    // rScale = d3.scaleLinear()
-    //     .domain([1, d3.max(data, function(d){ return +d.estimate})])
-    //     .range([2.5, 65]);
+    var depthScale = d3.scaleOrdinal()
+            .range("blue","purple","white","#pink")
 
-    var aScale = d3.scaleSqrt()
-                // .domain([0, d3.max(data, function(d){ return +d.estimate })])
-                .domain(d3.extent(data, function(d){ return +d.estimate}))
-                .range([2,25])
+    var nestedData = d3.nest()
+            .key(function(d) { return d.country})
+            // .rollup(function(v){ return { 
+            // total: d3.sum(v, function(d){ return d.estimate})};})
+            .entries(data)
 
-    var yScale = d3.scaleLog()
-        .domain(d3.extent(data, function(d){ return +d.marginOfError}))
-        .range([h-10,35])
+            // console.log(nestedData)
 
-    var xScale = d3.scaleLog()
-        .domain(d3.extent(data, function(d){ return +d.estimate}))
-        .range([10,w-35])
-    
-    var xAxis = d3.axisTop()
-                    .scale(xScale)
-                    .ticks(6)
-        
-var circles = svg.selectAll("circle")
-                    .data(data)
+    var packable = {id: "All Countries", values: nestedData}
+    var packChart = d3.pack()
+
+    packChart.size([width,height])
+
+    var root = d3.hierarchy(packable, function(d){ return d.values})
+                .sum(d => d.estimate)
+                // .sum(function(d) {console.log(d.value.total)})
+
+    // console.log(packChart(root).descendants())
+
+    svgTwo
+                .append("g")
+                //.attr("transform","translate(100,20)")
+                    .selectAll("circle")
+                    .data(packChart(root).descendants())
                     .enter()
                     .append("circle")
+                    .attr("class","seeThrough")
+                    .attr("r", function(d){ return d.r})
+                    .attr("cx", function(d){ return d.x})
+                    .attr("cy", function(d){ return d.y})
+                    .style("fill",d=> depthScale(d.depth))
+                    
+                
 
+//     var root = stratify(data)
+//     .sum(function(d) { return d.estimate; })
+//     .sort(function(a, b) { return b.estimate - a.estimate; });
 
-
-circles
-    .attr("cx", function (d) { return xScale(+d.estimate) })
-    .attr("cy", function (d) { return yScale(+d.marginOfError) })
-    .attr("r", function (d) { return aScale(+d.estimate) })
-    .style("fill", "white")
-    .on("mouseenter", function () {
-        d3.select(this).classed("hovering", true);
-    })
-    .on("mouseleave", function () {
-        d3.select(this).classed("hovering", false);
-    })
-    .append("title")
-    .text(function (d) {
-        return d.country});
-
+//     var node = svg.select("g")
+//     .selectAll("g")
+//     .data(root.descendants())
+//     .enter().append("g")
+//       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+//       .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+//       .each(function(d) { d.node = this; })
+//       .on("mouseover", hovered(true))
+//       .on("mouseout", hovered(false));
     
-    svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0, " + (h-1) + ")")
-        .call(xAxis)
+//     // .sum(function(d) { return d.estimate}).sort(function(a,b) {return b.value - a.value})
 
-    // svg.append("g")
-    //     .call(d3.axisBottom()
-    //     .scale(xScale))
+//     // console.log(root)
+     
 
 })
