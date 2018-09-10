@@ -39,10 +39,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 35px 100px 0;
+    padding: 35px 100px 5px;
     animation: .75s fadein 0.25s forwards;
     opacity: 0;
     z-index: 100;
+    background-color: bisque;
     /* maybe change animation to 1s fadein 0.5s if you want it slower/smoother */
   }
   
@@ -76,4 +77,17 @@
 
   .hovering {
     stroke: hotpink;
+  }
+
+  #vizOne {
+    background-color: pink;
+  }
+
+  .axis path,
+  .axis line {
+
+  }
+
+  .axis text {
+
   }
