@@ -55,7 +55,7 @@ d3.json("data.json", function(error, data) {
     var leftAxis = d3.axisRight(y);
                 
         svgThree.append("g")
-        .attr("class", "y-axis")
+        .attr("class", "axis")
         .attr("transform","translate("+ 0 +",0)")
         .call(leftAxis);
 })

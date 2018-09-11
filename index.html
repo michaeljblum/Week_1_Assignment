@@ -19,9 +19,11 @@
     </header>
 
     <section class="about" id="about">
-        <h3 class="title">About the viz</h3>
-        <p>Below are three visualizations of the same dataset.<br>
-            Immigrant populations in USA...
+        <h3 class="title">About the assignment</h3>
+        <p class="text-matter"><br><br>Below are three visualizations of the same dataset––the population of immigrants, split up on the basis of country of origin, living in the USA in ~2014-15. The data is taken from the 2015 1-year American Community Survey (ACS).<br><br>
+        These visualizations have been undertaken moreso as an exploration of the technical work of handling and representing data in Javascript than any exercise in the art of data visualization, or a foray into the work of data visualization as art.<br><br>
+        All of the visualizations below were created using the D3 library of Javascript. The coloring of the elements of all three is randomized, using a function and an array of predefined color values.<br><br>
+        If you would like to see which immigrant population is represented by which visual element, simply hover your mouse over it.
         </p>
         <hr>
         
@@ -32,18 +34,30 @@
         <h3>Viz One</h3>
         <div id="vizOne">
         </div>
+        <p class="text-matter">
+            Circles are notoriously unreliable as graphic representations of data. All the same, they are compelling visual analogies or cluster or buckets of quantified stuff.<br><br>
+            Within data visualization communities, it is conventionally held that circles need to be scaled by area rather than radius, so as to better match how we (the eye and the brain) perceive the size of circles. Nevertheless, the visualization above, whose circles are indeed scaled by area (using D3's square root scale), does not bear much resemblance with <a href="#viz-three">visualization three</a> below, which is the most graphically accurate.<br><br>
+            Where this visualization succeeds, though, is in the logarithmic scaling of the x-axis, which controls the circles' distribution along the x-axis as well as the numerical ticks along the x-axis. This scaling squeezes portions of the dataset along a logarithmic curve, which helps to show that the far preponderance of immigrant nationalities falls between the 20k and 500k ticks, while the actual majority in terms of population reside in the nine or so countries to the right (or greater than) the ~700k mark.
+        </p>
     </section>
 
     <section class="viz-two" id="viz-two">
         <h3>Viz Two</h3>
         <div id="vizTwo">
         </div>
+        <p class="text-matter">
+            This visualization is a circle pack. As far as visualizations go, it is not necessarily the best use of space, and doesn't particularly represent the populations too well. What circle packing is well suited for is the representation of hierarchy or density. This visualization, for example, has an almost biological look to it——each inner sphere has a cellular look to it, while the parent sphere almost looks like some sort of organism. Overall, it confers an organic feel to the data——communities and people interlocking and co-existing in the more general context of the country, the former comprising and coloring the makeup of the latter.<br><br>
+            From a technical point of view, the majority of the work that went into this visualization revolved around handling the data. In order to create a circle pack, it is necessary to make the data hierarchical (it was no initially). This was accomplished using D3's nest and hierarchy methods, as well as a handful of submethods chained within these latter two.
+        </p>
     </section>
 
     <section class="viz-three" id="viz-three">
         <h3>Viz Three</h3>
         <div id="vizThree">
         </div>
+        <p class="text-matter">
+            This visualization, a bar chart, is the most pedestrian and recognizable of the three, and yet it is also the most effective at faithfully representing the data. 
+        </p>
     </section>
 
 

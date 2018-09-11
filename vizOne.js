@@ -31,7 +31,7 @@ d3.json("data.json", function(error, data) {
     
     var xAxis = d3.axisTop()
                     .scale(xScale)
-                    .ticks(5, ",.1s")
+                    .ticks(10, ",.1s")
                     // .tickValues([1625,11643298])
         
     var circles = svg.selectAll("circle")
