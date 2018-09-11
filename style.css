@@ -99,3 +99,12 @@
 .svgTwo {
   background-color: paleturquoise
 }
+
+#vizTwo {
+  background-image: linear-gradient(to top, rgb(71, 106, 129), aqua);
+}
+
+#vizThree {
+  background-image: linear-gradient(to top, rgb(71, 106, 129), aqua);
+
+}

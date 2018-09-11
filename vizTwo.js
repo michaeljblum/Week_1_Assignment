@@ -33,7 +33,7 @@ d3.json("data.json", function(error, data) {
     var packable = {id: "All Countries", values: nestedData}
     var packChart = d3.pack()
 
-    packChart.size([width,height])
+    packChart.size([width,height]).padding(2)
 
     console.log(packable)
 
@@ -69,26 +69,4 @@ d3.json("data.json", function(error, data) {
                     .append("title")
                     .text(function (d) {
                         return d.data.country});
-                    
-                
-
-//     var root = stratify(data)
-//     .sum(function(d) { return d.estimate; })
-//     .sort(function(a, b) { return b.estimate - a.estimate; });
-
-//     var node = svg.select("g")
-//     .selectAll("g")
-//     .data(root.descendants())
-//     .enter().append("g")
-//       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-//       .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
-//       .each(function(d) { d.node = this; })
-//       .on("mouseover", hovered(true))
-//       .on("mouseout", hovered(false));
-    
-//     // .sum(function(d) { return d.estimate}).sort(function(a,b) {return b.value - a.value})
-
-//     // console.log(root)
-     
-
 })
